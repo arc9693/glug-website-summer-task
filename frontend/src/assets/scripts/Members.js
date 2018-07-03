@@ -1,4 +1,5 @@
 import Members from '@/services/members.js'
+import particles from  '@/components/particles'
 export default {
   data(){
     return{
@@ -42,4 +43,5 @@ export default {
         console.log(e.message);
          }
    },
+     components:{particles},
 }

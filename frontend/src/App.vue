@@ -17,10 +17,10 @@
 
 import Pageheader from './components/Header'
 import Pagefooter from './components/Footer'
-import particles from './components/particles'
+
 export default {
   name: 'App',
-  components:{ Pageheader,Pagefooter,particles},
+  components:{ Pageheader,Pagefooter},
 }
 </script>
 
