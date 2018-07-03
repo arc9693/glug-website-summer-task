@@ -19,7 +19,7 @@ export default {
         particlesJS('particles-js', {
           'particles': {
             'number': {
-              'value': 80,
+              'value': 100,
               'density': {
                 'enable': true,
                 'value_area': 800
@@ -44,7 +44,7 @@ export default {
               }
             },
             'opacity': {
-              'value': 0.5,
+              'value': 0.8,
               'random': false,
               'anim': {
                 'enable': false,
@@ -72,7 +72,7 @@ export default {
             },
             'move': {
               'enable': true,
-              'speed': 6,
+              'speed': 8,
               'direction': 'none',
               'random': false,
               'straight': false,
@@ -86,10 +86,10 @@ export default {
             }
           },
           'interactivity': {
-            'detect_on': 'canvas',
+            'detect_on': 'window',
             'events': {
               'onhover': {
-                'enable': false,
+                'enable': true,
                 'mode': 'repulse'
               },
               'onclick': {
@@ -113,8 +113,8 @@ export default {
                 'speed': 3
               },
               'repulse': {
-                'distance': 400,
-                'duration': 0.4
+                'distance': 100,
+                'duration': 0.9
               },
               'push': {
                 'particles_nb': 4
