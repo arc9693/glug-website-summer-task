@@ -1,7 +1,7 @@
 <template lang="html" >
 <div class="Blog">
 
-  <v-container grid-list-xs,sm,md,lg,xl >
+  <v-container grid-list-xs,sm,md,lg,xl fluid >
   <v-flex xs12 >
     <v-card class="post">
       <v-card-title primary-title >
@@ -36,9 +36,10 @@
       </v-card-actions>
       <div v-show="commentShow" class="strip">
           <div class="subheader" style="color:#e6e6e6"> <u>Comments:</u> </div>
+          <comment :comments="items"/>
           <template v-for="(item, index) in items">
-            <v-divider v-if="item.divider" :inset="item.inset" :key="index" dark></v-divider>
-            <v-layout  v-else :key="item.title" >
+            <v-divider  inset=true  dark></v-divider>
+            <v-layout  :key="item.title" >
                 <v-flex xs2 lg1>
                   <v-avatar>
                     <img :src="item.avatar" >
@@ -64,7 +65,7 @@
                 </v-flex>
             </v-layout>
             </template>
-        <!--    <comment/>-->
+
         </div>
          </v-card>
   </v-flex>
@@ -75,26 +76,26 @@
 </template>
 
 <script>
-//import comment from './NewComment'
+import comment from './NewComment'
 import Blog from '@/services/Blog'
 export default {
   data: () => ({
       post:null,
       items: [
         { avatar: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', title: 'Archana', subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?" },
-        { divider: true, inset: true },
+
         { avatar: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', title: 'Ranvir', subtitle: "&mdash; Wish I could come, but I'm out of town this weekend." },
-        { divider: true, inset: true },
+
         { avatar: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', title: 'Oui oui', subtitle: " &mdash; Do you have Paris recommendations? Have you e Paris recommendations? Have you eve Paris recommendations? Have you ever beeDo you have Paris recommenDo you have Paris recommendations? Hr beeDo you have Paris recommenDo you have Paris recommendations? Her beeDo you have Paris recommenDo you have Paris recommendations? Have you ever beedations? Have you ever been?" },
-        { divider: true, inset: true },
+
         { avatar: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', title: 'Blah', subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?" },
-        { divider: true, inset: true },
+
         { avatar: 'https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg', title: 'Arnav', subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos." }
       ],
       commentShow:false
     }),
   components:{
-  //  comment
+   comment
 },
 async created() {
       try{
