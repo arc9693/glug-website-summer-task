@@ -1,6 +1,5 @@
 <template>
-  <div id='particles-js'>
-  </div>
+  <div id="particles-js"/>
 </template>
 
 <script>
@@ -14,8 +13,8 @@ export default {
     })
   },
   methods: {
-      initParticlesJS () {
-        /* eslint-disable */
+    initParticlesJS () {
+      /* eslint-disable */
         particlesJS('particles-js', {
           'particles': {
             'number': {

@@ -1,16 +1,16 @@
 <template>
-  <div id="app"   >
+  <div id="app" >
     <v-app >
-        <main>
+      <main>
 
-            <Pageheader/>
-            <v-content>
-            <router-view ></router-view>
-            </v-content>
-            <Pagefooter/>
+        <Pageheader/>
+        <v-content>
+          <router-view />
+        </v-content>
+        <Pagefooter/>
       </main>
-  </v-app>
-</div>
+    </v-app>
+  </div>
 </template>
 
 <script>
@@ -20,21 +20,19 @@ import Pagefooter from './components/Footer'
 
 export default {
   name: 'App',
-  components:{ Pageheader,Pagefooter},
+  components: { Pageheader, Pagefooter}
 }
 </script>
 
 <style>
 
-
-#app {
+#app{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color:#A3CBC8;
-
-}
+   }
 
 .headingF{
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -44,6 +42,6 @@ export default {
   width:auto;
   margin-top: 7vh;
   color:#12202E;
-}
+   }
 
 </style>

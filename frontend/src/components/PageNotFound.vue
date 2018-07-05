@@ -2,7 +2,6 @@
 
   <h1 class="headingF">404<br>ERR,Looks like the page does not exist.</h1>
 
-
 </template>
 
 <script>

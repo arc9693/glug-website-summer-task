@@ -1,23 +1,35 @@
 <template lang="html">
-  <v-footer class=" white--text" absolute app>
-      <v-layout row wrap fill-height >
-        <v-flex xs12 >
-         <span v-for="icon in icons" class="tapp fa-2x"  style="color:#263238"><i v-bind:class="icon"></i></span>
-       </v-flex>
-       <v-flex xs12 class="white--text blue-grey darken-4">
-          &copy;2018 — <strong>GNU linux users group</strong>
-       </v-flex>
-          </v-layout>
-     </v-footer>
+  <v-footer
+    class=" white--text"
+    absolute
+    app>
+    <v-layout
+      row
+      wrap
+      fill-height >
+      <v-flex xs12 >
+        <span
+          v-for="(icon,index) in icons"
+          :key="index"
+          class="tapp fa-2x"
+          style="color:#263238"><i :class="icon"/></span>
+      </v-flex>
+      <v-flex
+        xs12
+        class="white--text blue-grey darken-4">
+        &copy;2018 — <strong>GNU linux users group</strong>
+      </v-flex>
+    </v-layout>
+  </v-footer>
 
 </template>
 
 <script>
 export default {
-    data: () => ({
-      icons: ["fab fa-facebook-square", 'fab fa-twitter', 'fab fa-google-plus-g', 'fab fa-linkedin', 'fab fa-instagram'],
-    })
-  }
+  data: () => ({
+    icons: ['fab fa-facebook-square', 'fab fa-twitter', 'fab fa-google-plus-g', 'fab fa-linkedin', 'fab fa-instagram']
+  })
+}
 </script>
 
 <style lang="css">

@@ -1,0 +1,24 @@
+@import 'https://fonts.googleapis.com/css?family=Audiowide|Iceland|Monoton|Pacifico|Press+Start+2P|Vampiro+One';
+.fas{
+  color:white !important;
+
+}
+.eachComment{
+  padding: 1rem;
+  padding-top: 0;
+}
+.Blog{
+  position: relative;
+  min-height:110vh
+}
+.post{
+  margin-top: 10vh;
+
+}
+.postImage{
+
+}
+.strip{
+  background-color:#12202E;
+  color:white;
+}
