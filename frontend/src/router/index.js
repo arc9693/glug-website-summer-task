@@ -6,6 +6,7 @@ const Members = () => import('@/components/Members')
 const Contactus = () => import('@/components/contact-us')
 const Blog = () => import('@/components/Blog')
 const Eachblog = () => import('@/components/Eachblog')
+const Activities = () => import('@/components/Activities')
 const PageNotFound = () => import('@/components/PageNotFound')
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/members',
       name: 'Members',
       component: Members
+    },
+    {
+      path: '/activities',
+      name: 'Activities',
+      component: Activities
     },
     {
       path: '/contact-us',

@@ -14,45 +14,22 @@
           alt=""></v-avatar></v-toolbar-title>
       <v-spacer/>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn
-          medium
-          class="linked"
-          flat
-          @click="navigateTo({name:'Home'})" >
+        <v-btn medium class="linked" flat @click="navigateTo({name:'Home'})" >
           Home
         </v-btn>
-        <v-btn
-          medium
-          class="linked"
-          flat
-          @click="navigateTo({name:'DisplayEvents'})" >
+        <v-btn medium class="linked" flat @click="navigateTo({name:'DisplayEvents'})" >
           Events
         </v-btn>
-        <v-btn
-          medium
-          class="linked"
-          flat
-          @click="navigateTo({name:'Members'})" >
+        <v-btn medium class="linked" flat @click="navigateTo({name:'Members'})" >
           Members
         </v-btn>
-        <v-btn
-          medium
-          class="linked"
-          flat >
+        <v-btn medium class="linked" flat @click="navigateTo({name:'Activities'})">
           Activities
         </v-btn>
-        <v-btn
-          medium
-          class="linked"
-          flat
-          @click="navigateTo({name:'Blog'})" >
+        <v-btn medium class="linked" flat @click="navigateTo({name:'Blog'})" >
           Blog
         </v-btn>
-        <v-btn
-          medium
-          class="linked"
-          flat
-          @click="navigateTo({name:'Contact-us'})" >
+        <v-btn medium class="linked" flat @click="navigateTo({name:'Contact-us'})" >
           Contact us
         </v-btn>
       </v-toolbar-items>
@@ -76,22 +53,12 @@
       align-content-center
       justify-center
       fill-height>
-      <v-flex><span
-        class=" linked fa-2x"
-        @click="navigateTo({name:'Home'})"><i class="fas icons fa-home"/></span></v-flex><br>
-      <v-flex><span
-        class=" linked fa-2x"
-        @click="navigateTo({name:'DisplayEvents'})"><i class="fas icons fa-dice"/></span></v-flex><br>
-      <v-flex><span
-        class=" linked fa-2x"
-        @click="navigateTo({name:'Members'})"><i class="fas icons fa-users"/></span></v-flex><br>
-      <v-flex><span class=" linked fa-2x"><i class="fas icons fa-briefcase"/></span></v-flex><br>
-      <v-flex><span
-        class=" linked fa-2x"
-        @click="navigateTo({name:'Blog'})"><i class="icons fab fa-blogger-b"/></span></v-flex><br>
-      <v-flex><span
-        class=" linked fa-2x"
-        @click="navigateTo({name:'Contact-us'})"><i class="fas icons fa-phone"/></span></v-flex><br>
+      <v-flex><span  class=" linked fa-2x" @click="navigateTo({name:'Home'})"><i class="fas icons fa-home"/></span></v-flex><br>
+      <v-flex><span  class=" linked fa-2x" @click="navigateTo({name:'DisplayEvents'})"><i class="fas icons fa-dice"/></span></v-flex><br>
+      <v-flex><span  class=" linked fa-2x" @click="navigateTo({name:'Members'})"><i class="fas icons fa-users"/></span></v-flex><br>
+      <v-flex><span  class=" linked fa-2x"  @click="navigateTo({name:'Activities'})"><i class="fas icons fa-briefcase"/></span></v-flex><br>
+      <v-flex><span  class=" linked fa-2x" @click="navigateTo({name:'Blog'})"><i class="icons fab fa-blogger-b"/></span></v-flex><br>
+      <v-flex><span  class=" linked fa-2x" @click="navigateTo({name:'Contact-us'})"><i class="fas icons fa-phone"/></span></v-flex><br>
     </v-layout>
   </v-navigation-drawer>
 </div>
