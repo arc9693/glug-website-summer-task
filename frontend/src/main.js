@@ -24,7 +24,7 @@ new Vue({
   created () {
     /* eslint-disable */
     window.fbAsyncInit = function () {
-      
+
       FB.init({
         appId: process.env.APP_ID,
         cookie: true,
@@ -36,7 +36,7 @@ new Vue({
         store.commit('updateStatus', response.status)
         if (store.state.status === 'connected') {
           FB.api('/me', function (response) {
-            store.commit('Adduser', {image: 'http://graph.facebook.com/' + response.id + '/picture', name: response.name})
+            store.commit('Adduser', {image: 'http://graph.facebook.com/' + response.id + '/picture', name: response.name,id: response.id})
           })
         }
       })

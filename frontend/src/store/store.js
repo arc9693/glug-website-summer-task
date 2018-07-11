@@ -11,7 +11,8 @@ export default new Vuex.Store({
     status: 'notconnected',
     user: {
       image: false,
-      name: false
+      name: false,
+      id: null
     }
   },
   mutations: {

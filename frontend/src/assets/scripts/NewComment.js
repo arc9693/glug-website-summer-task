@@ -4,11 +4,12 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import store from '@/store/store.js'
 import {quillEditor} from 'vue-quill-editor'
+import Blog from '@/services/Blog'
 export default {
   components: {
     quillEditor
   },
-  props: ['comments'],
+  props: ['postID', 'addComment'],
   data () {
     return {
       content: null,
@@ -31,6 +32,9 @@ export default {
     name () {
       return this.$store.state.user.name || ''
     },
+    id () {
+      return this.$store.state.user.id || null
+    },
     show () {
       return store.state.status === 'connected'
     }
@@ -40,8 +44,18 @@ export default {
     onEditorChange ({ quill, html, text }) {
       this.content = html
     },
-    Addcomment () {
-      this.comments.push({ avatar: this.src, title: this.name, subtitle: this.content })
+    async Addcomment () {
+      try {
+        await Blog.postComment({
+          user_social_id: this.id,
+          user_social_name: this.name,
+          data: this.content,
+          parent_id: 0,
+          post: this.postID})
+        this.addComment()
+      } catch (e) {
+        console.log(e)
+      }
       this.content = null
     },
     login () {
@@ -52,7 +66,8 @@ export default {
         {
           store.commit('updateStatus', response.status)
           FB.api('/me', function (response) {
-            store.commit('Adduser', {image: 'http://graph.facebook.com/' + response.id + '/picture', name: response.name})
+            store.commit('Adduser', {image: 'http://graph.facebook.com/' + response.id + '/picture', name: response.name ,id: response.id})
+
           })
         }
         else console.log('Authorisation denied');

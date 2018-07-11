@@ -45,7 +45,7 @@
             <div
               class="subheader"
               style="color:#e6e6e6"> <u>Comments:</u> </div>
-            <comment :comments="items"/>
+            <comment :postID="postID" :addComment="getComments"/>
             <template v-for="(item, index) in items">
               <v-divider dark/>
               <v-layout :key="index" >
@@ -53,7 +53,7 @@
                   xs2
                   lg1>
                   <v-avatar>
-                    <img :src="item.avatar" >
+                    <img :src="findAvatar(item.user_social_id)" >
                   </v-avatar>
                 </v-flex>
                 <v-flex xs10>
@@ -62,23 +62,14 @@
                     wrap
                     class="eachComment">
                     <v-flex xs12>
-                      <b><v-list-tile-title v-html="item.title"/></b>
+                      <b><v-list-tile-title v-html="item.user_social_name"/></b>
                     </v-flex>
                     <v-flex
                       xs12
                       align-content-start>
-                      <v-list-tile-content v-html="item.subtitle"/>
+                      <v-list-tile-content v-html="item.data"/>
                     </v-flex>
-                    <v-flex xs12 >
-                      <v-list-tile-content>
-                        <v-btn
-                          flat
-                          icon
-                          color="primary">
-                          <i class="fas fa-thumbs-up"/>
-                        </v-btn>
-                      </v-list-tile-content>
-                    </v-flex>
+
                   </v-layout>
                 </v-flex>
               </v-layout>

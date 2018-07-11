@@ -1,4 +1,5 @@
 import Api from './Api'
+import axios from 'axios'
 
 export default {
 
@@ -7,5 +8,13 @@ export default {
   },
   getEachPost (id) {
     return Api().get(`blog/posts/${id}`)
+  },
+  postComment (data) {
+    return axios.post('https://sdxblog.ml/blog/comments/', data, {
+      headers: {
+        'Authorization': 'Token ' + process.env.AUTH_TOKEN
+      }
+    })
   }
+
 }

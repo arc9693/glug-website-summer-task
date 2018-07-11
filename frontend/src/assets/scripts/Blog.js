@@ -1,4 +1,4 @@
-import filter from 'lodash/filter'
+// import filter from 'lodash/filter'
 import orderBy from 'lodash/orderBy'
 import Blog from '@/services/Blog'
 
@@ -25,8 +25,8 @@ export default {
   computed: {
     PostsSorted: function () {
       return orderBy(this.posts, [this.sortQuery[0]], [this.sortQuery[1]])
-    },
-    RecentPosts: function () {
+    }
+    /*    RecentPosts: function () {
       return (filter(this.posts, function (o) {
         var oneDay = 1000 * 60 * 60 * 24
         var date1Ms = new Date().getTime()
@@ -34,7 +34,7 @@ export default {
         var differenceMs = date1Ms - date2Ms
         return (differenceMs / oneDay <= 31)
       }))
-    }
+    } */
   },
   async created () {
     try {
