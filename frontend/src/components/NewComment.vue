@@ -22,8 +22,8 @@
           xs12
           wrap>
           <v-text-field multi-line label="Compose a saga" v-model="content" box ></v-text-field>
-          <v-btn
-              v-show="this.$store.state.status==='connected'"
+          <v-btn small
+              v-show="this.$auth.isAuthenticated()"
               color="white"
               @click="Addcomment()">comment</v-btn>
         </v-flex>
@@ -38,7 +38,7 @@
             fab
             small
             color="blue"
-            @click="login"><v-icon color="white">fab fa-lg fa-facebook-f</v-icon>
+            @click="auth('facebook')"><v-icon color="white">fab fa-lg fa-facebook-f</v-icon>
           </v-btn>
 
           <v-btn
@@ -46,7 +46,7 @@
             fab
             small
             color="red"
-            @click="login"><v-icon color="white">fab fa-lg  fa-google</v-icon>
+            @click="auth('google')"><v-icon color="white">fab fa-lg  fa-google</v-icon>
           </v-btn>
 
           <v-btn
@@ -54,20 +54,20 @@
             fab
             small
             color="blue-grey darken-4"
-            @click="login"><v-icon color="white">fab fa-1g fa-github</v-icon>
+             @click="auth('github')"><v-icon color="white">fab fa-1g fa-github</v-icon>
           </v-btn>
 
         </v-flex>
         <v-flex
           v-show="show"
           xs12>
-          logout
+          Logout
           <v-btn
             dark
             fab
             small
             color="blue"
-            @click="logout"><v-icon color="white">fas fa-sign-out-alt</v-icon>
+            @click="authLogout()"><v-icon color="white">fas fa-sign-out-alt</v-icon>
 
           </v-btn>
         </v-flex>

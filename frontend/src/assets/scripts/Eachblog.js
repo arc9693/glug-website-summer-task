@@ -18,6 +18,7 @@ export default {
         this.items = this.post.comments
       } catch (e) {
         console.log(e.message)
+        this.$router.push({name: 'errorPage'})
       }
     }
 

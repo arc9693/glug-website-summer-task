@@ -1,25 +1,22 @@
-import store from '@/store/store.js'
 import Blog from '@/services/Blog'
 export default {
 
   props: ['postID', 'addComment'],
   data () {
     return {
-      content: null
+      content: null,
+      show: this.$auth.isAuthenticated()
     }
   },
   computed: {
     src () {
-      return this.$store.state.user.image || 'https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png'
+      return this.$store.state.user.avatar
     },
     name () {
-      return this.$store.state.user.name || ''
+      return this.$store.state.user.name
     },
     id () {
-      return this.$store.state.user.id || null
-    },
-    show () {
-      return store.state.status === 'connected'
+      return null
     }
   },
 
@@ -38,29 +35,47 @@ export default {
       }
       this.content = null
     },
-    login () {
-      /* eslint-disable */
+    authLogout: function () {
+      this.$auth.logout().then(() => {
+        if (!this.$auth.isAuthenticated()) {
+          this.show = this.$auth.isAuthenticated()
+          this.response = null
+          this.$store.commit('UpdateUser', { name: '', avatar: 'https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png' })
+        }
+      })
+    },
+    auth: function (provider) {
+      if (this.$auth.isAuthenticated()) {
+        this.$auth.logout()
+      }
 
-      FB.login(function (response) {
-        if(response.status==='connected')
-        {
-          store.commit('updateStatus', response.status)
-          FB.api('/me', function (response) {
-            store.commit('Adduser', {image: 'http://graph.facebook.com/' + response.id + '/picture', name: response.name ,id: response.id})
+      this.response = null
 
+      var this_ = this
+      this.$auth.authenticate(provider).then(function (authResponse) {
+        this_.show = this_.$auth.isAuthenticated()
+        if (provider === 'github') {
+          this_.$http.get('https://api.github.com/user').then(function (response) {
+            this_.response = response
+            this_.$store.commit('UpdateUser', {name: response.data.name, avatar: response.data.avatar_url})
+          })
+        } else if (provider === 'facebook') {
+          console.log(this_.$auth.isAuthenticated())
+          this_.$http.get('https://graph.facebook.com/v2.5/me', {
+            params: { access_token: this_.$auth.getToken() }
+          }).then(function (response) {
+            this_.response = response
+            this_.$store.commit('UpdateUser', {name: response.data.name, avatar: 'http://graph.facebook.com/' + response.data.id + '/picture'})
+          })
+        } else if (provider === 'google') {
+          this_.$http.get('https://www.googleapis.com/plus/v1/people/me/openIdConnect').then(function (response) {
+            this_.response = response
+            this_.$store.commit('UpdateUser', {name: response.data.name, avatar: response.data.picture})
           })
         }
-        else console.log('Authorisation denied');
-      }, {
-        scope: '',
-        return_scopes: true
-      },
-      { auth_type: 'reauthenticate' })
-    },
-    logout () {
-      FB.logout(function (response) {
-        store.commit('updateStatus', response.status)
-        store.commit('Adduser', {image: false, name: false})
+      }).catch(function (err) {
+        this_.response = err
+        console.log(err)
       })
     }
   /* eslint-enable */
