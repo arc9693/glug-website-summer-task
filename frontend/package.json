@@ -20,7 +20,6 @@
     "particles.js": "^2.0.0",
     "sass-loader": "^7.0.3",
     "vue": "^2.5.2",
-    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
     "vue-social-sharing": "^2.3.3",
     "vuetify": "^1.0.19",

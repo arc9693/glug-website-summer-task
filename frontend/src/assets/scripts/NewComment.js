@@ -1,28 +1,11 @@
-
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
 import store from '@/store/store.js'
-import {quillEditor} from 'vue-quill-editor'
 import Blog from '@/services/Blog'
 export default {
-  components: {
-    quillEditor
-  },
+
   props: ['postID', 'addComment'],
   data () {
     return {
-      content: null,
-
-      editorOption: {
-        modules: {
-          toolbar: {
-            container: '#toolbar'}
-
-        },
-        placeholder: 'Compose an epic...'
-      }
-
+      content: null
     }
   },
   computed: {
@@ -41,9 +24,6 @@ export default {
   },
 
   methods: {
-    onEditorChange ({ quill, html, text }) {
-      this.content = html
-    },
     async Addcomment () {
       try {
         await Blog.postComment({

@@ -8,7 +8,8 @@
         wrap
         class="Recentpost">
         <v-flex
-          v-for="post in posts"
+          v-for="(post,index) in posts"
+          :key=index
           xs12 >
           <v-card color="cyan lighten-5" >
             <v-card-title primary-title>

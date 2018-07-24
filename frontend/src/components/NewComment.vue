@@ -21,28 +21,17 @@
         <v-flex
           xs12
           wrap>
-          <quill-editor
-            ref="myQuillEditor"
-            v-model="content"
-            :options="editorOption"
-            style="background-color:white;color:black"
-            @change="onEditorChange($event)"/>
-          <div
-            id="toolbar"
-            style="background-color:white">
-            <button class="ql-image"/>
-            <button class="ql-link"/>
-            <v-btn
+          <v-text-field multi-line label="Compose a saga" v-model="content" box ></v-text-field>
+          <v-btn
               v-show="this.$store.state.status==='connected'"
-              color="blue-grey"
+              color="white"
               @click="Addcomment()">comment</v-btn>
-          </div>
-
         </v-flex>
         <v-flex
           v-show="!show"
-          xs12>
-          You must first login to comment
+          xs12
+          wrap>
+          <p>You must first login to comment</p>
 
           <v-btn
             dark
@@ -50,8 +39,24 @@
             small
             color="blue"
             @click="login"><v-icon color="white">fab fa-lg fa-facebook-f</v-icon>
-
           </v-btn>
+
+          <v-btn
+            dark
+            fab
+            small
+            color="red"
+            @click="login"><v-icon color="white">fab fa-lg  fa-google</v-icon>
+          </v-btn>
+
+          <v-btn
+            dark
+            fab
+            small
+            color="blue-grey darken-4"
+            @click="login"><v-icon color="white">fab fa-1g fa-github</v-icon>
+          </v-btn>
+
         </v-flex>
         <v-flex
           v-show="show"
@@ -77,7 +82,4 @@
 <script src='../assets/scripts/NewComment.js'></script>
 
 <style lang="css">
-.ql-editor{
-  min-height:20vh;
-}
 </style>

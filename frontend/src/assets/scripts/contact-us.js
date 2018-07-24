@@ -1,4 +1,3 @@
-import Home from '@/services/Home'
 export default {
   data: () => ({
     valid: true,
@@ -27,9 +26,6 @@ export default {
     clear () {
       this.$refs.form.reset()
     }
-  },
-  async created () {
-    try { this.contacts = (await Home.getContacts()).data } catch (e) { console.log(e.message) }
   }
 
 }

@@ -9,9 +9,6 @@
       wrap >
 
       <v-flex xs12 >
-        <!-- <v-flex xs12 d-flex>
-       <h2 class="blogHead">posts</h2>
-     </v-flex>-->
         <v-container fluid>
           <v-layout
             row
@@ -46,12 +43,7 @@
           :posts="PostsSorted"
           :search-query="filter"/>
       </v-flex>
-      <!--   <v-flex xs12 lg3 class="Recentposts">
-          <v-flex xs12 >
-            <h2 class="blogHead">Recent posts</h2>
-          </v-flex>
-          <Recentpost :posts="RecentPosts"/>
-   </v-flex>-->
+
     </v-layout>
   </div>
 </template>
