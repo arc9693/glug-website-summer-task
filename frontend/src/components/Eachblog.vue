@@ -35,10 +35,76 @@
               @click="commentShow=!commentShow">
               <i class="fas fa-lg fa-comment"/>
             </v-btn>
-            <v-btn icon>
-              <i class="fas fa-lg fa-share-alt"/>
+            <v-btn
+            icon
+            @click.stop="dialog = true"
+            >
+            <i class="fas fa-lg fa-share-alt"/>
             </v-btn>
-          </v-card-actions>
+
+  <v-dialog
+    v-model="dialog"
+    max-width="300"
+  >
+    <v-card>
+      <v-card-title class="headline">Share using...</v-card-title>
+
+      <v-card-text>
+        <social-sharing
+          :url="$route.path"
+
+          inline-template>
+
+          <v-list>
+            <network network="facebook">
+            <v-list-tile @click="">
+
+                <v-list-tile-action><i class="fab fa-lg fa-facebook-f"/></v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>Facebbok</v-list-tile-title>
+                </v-list-tile-content>
+
+            </v-list-tile>
+            </network>
+            <network network="twitter">
+            <v-list-tile @click="">
+
+                <v-list-tile-action><i class="fab fa-lg fa-twitter" /></v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>Twitter</v-list-tile-title>
+                </v-list-tile-content>
+
+           </v-list-tile>
+           </network>
+           <network network="whatsapp">
+            <v-list-tile @click="">
+
+                <v-list-tile-action><i class="fab fa-lg fa-whatsapp"/></v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>Whatsapp</v-list-tile-title>
+                </v-list-tile-content>
+
+            </v-list-tile>
+            </network>
+          </v-list>
+        </social-sharing>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+
+        <v-btn
+          color="blue-grey darken-1"
+          small
+          @click="dialog = false"
+          dark
+        >
+          close
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+   </v-card-actions>
           <div
             v-show="commentShow"
             class="strip">

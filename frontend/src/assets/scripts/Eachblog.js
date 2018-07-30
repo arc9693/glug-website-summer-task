@@ -6,7 +6,8 @@ export default {
   data: () => ({
     post: '',
     items: null,
-    commentShow: false
+    commentShow: false,
+    dialog: false
   }),
   methods: {
     findAvatar (id) {

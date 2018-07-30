@@ -14,9 +14,6 @@ export default {
     },
     name () {
       return this.$store.state.user.name
-    },
-    id () {
-      return null
     }
   },
 
@@ -24,7 +21,6 @@ export default {
     async Addcomment () {
       try {
         await Blog.postComment({
-          user_social_id: this.id,
           user_social_name: this.name,
           data: this.content,
           parent_id: 0,
@@ -65,6 +61,7 @@ export default {
             params: { access_token: this_.$auth.getToken() }
           }).then(function (response) {
             this_.response = response
+            console.log(this_.$auth.getPayload())
             this_.$store.commit('UpdateUser', {name: response.data.name, avatar: 'http://graph.facebook.com/' + response.data.id + '/picture'})
           })
         } else if (provider === 'google') {
@@ -78,6 +75,12 @@ export default {
         console.log(err)
       })
     }
-  /* eslint-enable */
+  },
+  created () {
+    console.log(this.response)
+  //  console.log({'name': this.response.data.name, 'avatar': this.response.data.picture || this.response.data.avatar_url || 'http://graph.facebook.com/' + this.response.data.id + '/picture'})
+  //  if (this.$auth.isAuthenticated()) { this.$store.commit('UpdateUser', {name: this.response.data.name, avatar: this.response.data.picture || this.response.data.avatar_url || 'http://graph.facebook.com/' + this.response.data.id + '/picture'}) }
   }
+  /* eslint-enable */
+
 }
